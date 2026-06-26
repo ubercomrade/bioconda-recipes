@@ -28,7 +28,6 @@ test:
 about:
   home: https://www.jstacs.de/index.php/Slim
   license: GPL-3.0-or-later
-  license_file: COPYING.txt
   summary: Slim motif discovery models from Jstacs
   description: |
     Jstacs Slim tools for sparse local inhomogeneous mixture models and
