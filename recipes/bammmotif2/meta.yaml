@@ -13,10 +13,13 @@ source:
 build:
   number: 0
   skip: true  # [win]
+  run_exports:
+    - {{ pin_subpackage('bammmotif2', max_pin="x.x") }}
 
 requirements:
   build:
     - {{ compiler('cxx') }}
+    - {{ stdlib('c') }}
     - cmake
     - make  # [unix]
   host:
