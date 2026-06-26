@@ -1,0 +1,44 @@
+{% set name = "jstacs-slim" %}
+{% set version = "2.4.1" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/Jstacs/Jstacs/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: b93a3ea2e4b84e1fddfd5f53bc179e8c0da4f1f1a8e84afd23b18069bfaa124c
+
+build:
+  number: 0
+  noarch: generic
+  run_exports:
+    - {{ pin_subpackage(name, max_pin="x") }}
+
+requirements:
+  build:
+    - openjdk >=11,<18
+  run:
+    - openjdk >=11,<18
+
+test:
+  commands:
+    - jstacs-slim 2>&1 | grep -Ei "Slim|Tool|Input file"
+
+about:
+  home: https://www.jstacs.de/index.php/Slim
+  license: GPL-3.0-or-later
+  license_file: COPYING.txt
+  summary: Slim motif discovery models from Jstacs
+  description: |
+    Jstacs Slim tools for sparse local inhomogeneous mixture models and
+    dependency-aware transcription-factor binding motif discovery. Slim models
+    can be used with Dimont-style de-novo motif discovery workflows for DNA
+    binding sites.
+
+  identifiers:
+    - doi:10.1093/nar/gkw1210
+
+extra:
+  recipe-maintainers:
+    - ubercomrade
